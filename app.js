@@ -51,6 +51,6 @@ app.post("/image", (req, res) => {
   });
 });
 
-var port = 3000 || process.env.PORT;
+var port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log("Server Started at " + port));
