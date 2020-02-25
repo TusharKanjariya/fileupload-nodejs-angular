@@ -1,0 +1,43 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron p-5" appDnd (fileDropped)="onFileDropped($event)">
+        <label class="display-2 text-black-50">Drop File Here</label>
+      </div>
+
+      <div class="alert alert-danger" *ngIf="showAlert">
+        Only PNG, JPG and JPEG image formats are acceptable.
+      </div>
+      <div *ngIf="files">
+        <ul>
+          <li class="card p-3">
+            <div class="card-body">
+              <p class="card-text">{{ files?.name }}</p>
+              <p class="card-text">{{ files?.size / 1000 }} KB</p>
+              <div class="progress" style="height: 20px;" *ngIf="showProgress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  [ngStyle]="{ width: progressValue + '%' }"
+                >
+                  {{ progressValue + "%" }}
+                </div>
+              </div>
+              <button
+                type="button"
+                class="close float-right"
+                aria-label="Close"
+                (click)="files = []"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </li>
+        </ul>
+        <button class="btn btn-primary" (click)="uploadData()">Upload</button>
+        <button class="btn btn-default" (click)="files = null">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
