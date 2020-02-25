@@ -46,7 +46,7 @@ app.post("/image", (req, res) => {
       console.log(err);
       res.send(err);
     } else {
-      res.send("done");
+      res.send(__dirname + "images/uploads/" + req.file.filename);
     }
   });
 });
