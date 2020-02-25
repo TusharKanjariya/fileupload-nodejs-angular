@@ -33,7 +33,7 @@ var upload = multer({
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/images/uploads");
+  // res.sendFile(__dirname + "/images/uploads");
 });
 var postImage = upload.single("image");
 
@@ -46,7 +46,7 @@ app.post("/image", (req, res) => {
       console.log(err);
       res.send(err);
     } else {
-      res.send(__dirname + "images/uploads/" + req.file.filename);
+      res.send(__dirname + "/images/uploads/" + req.file.filename);
     }
   });
 });
